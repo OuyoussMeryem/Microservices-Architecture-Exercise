@@ -1,0 +1,57 @@
+<div class="container p-3" *ngIf="orderDetails">
+ <div class="row">
+   <div class="col-md-6">
+
+     <div class="card">
+       <div class="card-header">Order ID: {{orderDetails.id}}</div>
+       <div class="card-body">
+         <ul class="list-group small">
+           <li class="list-group-item">Order Id: {{orderDetails.id}}</li>
+           <li class="list-group-item">Order Date: {{orderDetails.createdAt | date :'dd/MM/yyyy'}}</li>
+           <li class="list-group-item">Order Status: {{orderDetails.status}}</li>
+           <li class="list-group-item">Customer Id: {{customerDetail.id}}</li>
+           <li class="list-group-item">Customer name: {{customerDetail.name}}</li>
+           <li class="list-group-item">Customer email: {{customerDetail.email}}</li>
+         </ul>
+       </div>
+     </div>
+   </div>
+   <div class="col-md-6">
+     <div class="card">
+       <div class="card-header">Product Items</div>
+       <div class="card-body">
+         <table class="table small">
+           <thead>
+           <tr class="bg-dark text-white">
+             <th  class="bg-dark text-white">ID</th>
+             <th  class="bg-dark text-white">Product Name</th>
+             <th  class="bg-dark text-white">Product price</th>
+             <th  class="bg-dark text-white">Product quantity</th>
+             <th  class="bg-dark text-white">Discount</th>
+             <th  class="bg-dark text-white">Amount</th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr *ngFor="let productItem of productItemsList">
+             <td>{{productItem.id}}</td>
+             <td>{{productItem.product.name}}</td>
+             <td class="text-end">{{productItem.price | number :'.2'}}</td>
+             <td class="text-end">{{productItem.quantity}}</td>
+             <td  class="text-end">{{productItem.discount | number :'.2'}}</td>
+             <td  class="text-end">{{productItem.amount |number:'.2'}}</td>
+           </tr>
+           </tbody>
+           <tfoot>
+           <tr class="bg-dark text-white">
+             <td  class="bg-dark text-white" colspan="2">la somme est :</td>
+             <td  class="bg-dark text-white">{{orderDetails.somme |number :'.2'}}</td>
+           </tr>
+
+           </tfoot>
+         </table>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+

@@ -1,0 +1,26 @@
+<div class="p-3">
+  <div class="card">
+    <div class="card-header">List of Products</div>
+    <div class="card-body">
+   <table class="table" *ngIf="products">
+     <thead>
+     <tr>
+       <th>ID</th>
+       <th>NAME</th>
+       <th>PRICE</th>
+       <th>QUANTITY</th>
+     </tr>
+     </thead>
+     <tbody>
+     <tr *ngFor="let p of products._embedded.products">
+       <td>{{p.id}}</td>
+       <td>{{p.name}}</td>
+       <td>{{p.price}}</td>
+       <td>{{p.quantity}}</td>
+     </tr>
+     </tbody>
+
+   </table>
+    </div>
+  </div>
+</div>
